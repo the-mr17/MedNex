@@ -10,30 +10,65 @@ import {
     Link,
     Button,
 } from "@nextui-org/react";
-import { AcmeLogo } from "./AcmeLogo.jsx";
+import { MedNexLogo } from "./MedNexLogo.jsx";
 
 export default function NavBar() {
     return (
-        <Navbar shouldHideOnScroll>
+        <Navbar shouldHideOnScroll isBordered>
             <NavbarBrand>
-                <AcmeLogo />
-                <p className="font-bold text-inherit">ACME</p>
+                <MedNexLogo />
+                <p className="font-bold text-inherit">MedNex</p>
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Features
-                    </Link>
-                </NavbarItem>
                 <NavbarItem isActive>
-                    <Link href="#" aria-current="page">
-                        Customers
-                    </Link>
+                    <Button
+                        href="#"
+                        as={Link}
+                        color="primary"
+                        variant="solid"
+                    >
+                        Locate Clinics
+                    </Button>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Integrations
-                    </Link>
+                    <Button
+                        href="#"
+                        as={Link}
+                        color="primary"
+                        variant="transparent"
+                    >
+                        Treat Me
+                    </Button>
+                </NavbarItem>
+                <NavbarItem>
+                    <Button
+                        href="#"
+                        as={Link}
+                        color="primary"
+                        variant="transparent"
+                    >
+                        Insure Me
+                    </Button>
+                </NavbarItem>
+                <NavbarItem>
+                    <Button
+                        href="#"
+                        as={Link}
+                        color="primary"
+                        variant="transparent"
+                    >
+                        Government
+                    </Button>
+                </NavbarItem>
+                <NavbarItem>
+                    <Button
+                        href="#"
+                        as={Link}
+                        color="primary"
+                        variant="transparent"
+                    >
+                        Community
+                    </Button>
                 </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
