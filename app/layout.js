@@ -11,6 +11,7 @@ export const metadata = {
 // app/layout.tsx
 import { Providers } from "./providers";
 import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function RootLayout({ children }) {
     return (
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
                 <Providers>
                     <NavBar />
                     {children}
+                    <Footer />
                 </Providers>
             </body>
         </html>
