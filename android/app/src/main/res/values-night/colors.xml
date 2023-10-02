@@ -7,4 +7,6 @@
     <color name="bg_color">@color/orange_black</color>
     <color name="bg_card_color">@color/black</color>
     <color name="bg_card_border_color">@color/white</color>
+    <color name="et_bg_color">@color/medium_black</color>
+    <color name="et_hint_color">@color/medium_grey</color>
 </resources>

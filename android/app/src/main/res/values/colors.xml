@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="medium_black">#1f222a</color>
+    <color name="medium_grey">#6d6f72</color>
+    <color name="grey">#858494</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="orange_100">#FDEEDD</color>
@@ -23,4 +25,6 @@
     <color name="bg_color">@color/orange_100</color>
     <color name="bg_card_color">@color/white</color>
     <color name="bg_card_border_color">@color/black</color>
+    <color name="et_bg_color">@color/white</color>
+    <color name="et_hint_color">@color/grey</color>
 </resources>
