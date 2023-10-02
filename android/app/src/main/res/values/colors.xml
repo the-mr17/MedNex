@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="orange_300">#FFB277</color>
+    <color name="orange_500">#E1833A</color>
+    <color name="orange_700">#BA6218</color>
+    <color name="orange_900">#944300</color>
+
+    <color name="toolbar_color">@color/orange_500</color>
+    <color name="toolbar_txt_color">@color/white</color>
 </resources>
