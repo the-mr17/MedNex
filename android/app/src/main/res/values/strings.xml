@@ -2,4 +2,9 @@
     <string name="app_name">MedNex</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="login_or_create_an_account_nto_connect_with_a_bigger_world">Login or Create an account\nto connect with a bigger world</string>
+    <string name="login_or_sign_up">Login or Sign Up</string>
+    <string name="welcome_illustration">Welcome Illustration</string>
 </resources>
