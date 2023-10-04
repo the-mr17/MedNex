@@ -6,5 +6,25 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="medium_black">#1f222a</color>
+    <color name="medium_grey">#6d6f72</color>
+    <color name="grey">#858494</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="orange_100">#FDEEDD</color>
+    <color name="orange_300">#FFB277</color>
+    <color name="orange_500">#E1833A</color>
+    <color name="orange_700">#BA6218</color>
+    <color name="orange_900">#944300</color>
+    <color name="orange_black">#191818</color>
+
+    <color name="toolbar_color">@color/orange_500</color>
+    <color name="toolbar_txt_color">@color/white</color>
+    <color name="txt_color">@color/black</color>
+    <color name="bg_btn_color">@color/white</color>
+    <color name="bg_color">@color/orange_100</color>
+    <color name="bg_card_color">@color/white</color>
+    <color name="bg_card_border_color">@color/black</color>
+    <color name="et_bg_color">@color/white</color>
+    <color name="et_hint_color">@color/grey</color>
 </resources>
