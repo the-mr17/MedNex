@@ -13,21 +13,21 @@
         android:paddingBottom="20dp">
 
         <TextView
-            android:id="@+id/tv_first_name_heading"
+            android:id="@+id/tv_username_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="18dp"
             android:fontFamily="@font/rubik"
             android:gravity="center"
-            android:text="@string/first_name"
+            android:text="@string/username"
             android:textColor="@color/txt_color"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_first_name"
+            android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_edit_text"
@@ -36,7 +36,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
-            android:hint="@string/your_first_name"
+            android:hint="@string/your_username"
             android:textColorHint="@color/et_hint_color"
             android:inputType="textPersonName"
             android:textAllCaps="false"
@@ -47,24 +47,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_first_name_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_username_heading" />
 
         <TextView
-            android:id="@+id/tv_last_name_heading"
+            android:id="@+id/tv_full_name_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="18dp"
             android:fontFamily="@font/rubik"
             android:gravity="center"
-            android:text="@string/last_name"
+            android:text="@string/full_name"
             android:textColor="@color/txt_color"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_first_name" />
+            app:layout_constraintTop_toBottomOf="@id/et_username"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_last_name"
+            android:id="@+id/et_full_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_edit_text"
@@ -73,7 +73,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
-            android:hint="@string/your_last_name"
+            android:hint="@string/your_full_name"
             android:textColorHint="@color/et_hint_color"
             android:inputType="textPersonName"
             android:textAllCaps="false"
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_last_name_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_full_name_heading" />
 
         <TextView
             android:id="@+id/tv_email_heading"
@@ -98,7 +98,7 @@
             android:textColor="@color/txt_color"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_last_name" />
+            app:layout_constraintTop_toBottomOf="@+id/et_full_name" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_email_address"
@@ -197,6 +197,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_confirm_password_heading" />
 
+        <TextView
+            android:id="@+id/tv_category_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/rubik"
+            android:gravity="center"
+            android:text="I am a "
+            android:textColor="@color/txt_color"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/rg_category"
+            app:layout_constraintTop_toBottomOf="@+id/et_confirm_password" />
+
+        <RadioGroup
+            android:id="@+id/rg_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_category_heading">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patient"
+                android:fontFamily="@font/rubik_medium"
+                android:textColor="@color/txt_color"
+                android:layout_marginHorizontal="10dp"
+                android:textSize="16sp"
+                android:buttonTint="@color/orange_500"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/doctor"
+                android:fontFamily="@font/rubik_medium"
+                android:textColor="@color/txt_color"
+                android:layout_marginHorizontal="10dp"
+                android:textSize="16sp"
+                android:buttonTint="@color/orange_500"/>
+
+        </RadioGroup>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_create_account"
             android:layout_width="match_parent"
@@ -213,7 +260,7 @@
             android:layout_marginEnd="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_confirm_password" />
+            app:layout_constraintTop_toBottomOf="@+id/rg_category" />
 
         <LinearLayout
             android:id="@+id/loading_bar"
@@ -228,7 +275,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_confirm_password">
+            app:layout_constraintTop_toBottomOf="@+id/rg_category">
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:layout_width="wrap_content"

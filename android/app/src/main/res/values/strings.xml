@@ -19,4 +19,10 @@
     <string name="your_password_confirmation">Your password confirmation</string>
     <string name="create_account">Create Account</string>
     <string name="by_continuing_you_agree_to_the_terms_of_services_n_and_privacy_policy">By continuing, you agree to the Terms of Services \n and Privacy Policy</string>
+    <string name="your_full_name">Your full name</string>
+    <string name="full_name">Full Name</string>
+    <string name="your_username">Your username</string>
+    <string name="username">Username</string>
+    <string name="patient">Patient</string>
+    <string name="doctor">Doctor</string>
 </resources>
