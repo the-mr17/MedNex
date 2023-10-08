@@ -1,10 +1,8 @@
 package com.mr_17.mednex.ui.auth.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.mr_17.mednex.MainActivity
 import com.mr_17.mednex.R
