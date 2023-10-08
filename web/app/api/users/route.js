@@ -16,8 +16,11 @@ export const POST = async (req) => {
         await newUser.save();
         return new Response(JSON.stringify(newUser), { status: 201 });
     } catch (error) {
-        console.log(error);
-        return new Response("Failed to create user! " + error, { status: 501 });
+        const err = {
+            message: "Failed to create User",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };
 
@@ -28,6 +31,6 @@ export const GET = async (req) => {
         return new Response(JSON.stringify(user), { status: 200 });
     } catch (error) {
         console.log(error);
-        return new Response("Failed to get User", { status: 500 });
+        return new Response("Failed to get Users", { status: 500 });
     }
 };

@@ -8,7 +8,11 @@ export const GET = async (req, { params }) => {
 
         return new Response(JSON.stringify(post), { status: 200 });
     } catch (error) {
-        return new Response("Failed to get Post", { status: 500 });
+        const err = {
+            message: "Failed to get Post",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };
 export const PUT = async (req, { params }) => {
@@ -24,7 +28,11 @@ export const PUT = async (req, { params }) => {
 
         return new Response(JSON.stringify(post));
     } catch (error) {
-        return new Response("Failed to update Post " + error, { status: 500 });
+        const err = {
+            message: "Failed to update Post",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };
 export const DELETE = async (req, { params }) => {
@@ -33,6 +41,10 @@ export const DELETE = async (req, { params }) => {
         const post = await Post.findByIdAndDelete(params.id);
         return new Response(`Post ${params.id} was deleted`, { status: 200 });
     } catch (error) {
-        return new Response("Failed to delete Post", { status: 500 });
+        const err = {
+            message: "Failed to Delete Post",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };

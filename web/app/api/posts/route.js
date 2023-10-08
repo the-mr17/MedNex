@@ -9,8 +9,10 @@ export const GET = async (request) => {
 
         return new Response(JSON.stringify(posts), { status: 200 });
     } catch (error) {
-        return new Response("Failed to fetch all posts " + error, {
-            status: 500,
-        });
+        const err = {
+            message: "Failed to get Posts",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };

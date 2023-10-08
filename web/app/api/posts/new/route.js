@@ -18,8 +18,10 @@ export const POST = async (request) => {
         await newPost.save();
         return new Response(JSON.stringify(newPost), { status: 201 });
     } catch (error) {
-        return new Response("Failed to create a new post\n" + error, {
-            status: 500,
-        });
+        const err = {
+            message: "Failed to create Post",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };

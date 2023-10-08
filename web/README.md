@@ -1,30 +1,99 @@
-Mednex is your one stop solution to finding a healthy lifestyle.
+## API Reference
 
-## Getting Started
+#### Get all items
 
-First, run the development server:
+-   Users
+
+```http
+  GET {base_url}/api/users
+```
+
+-   Posts
+
+```http
+  POST {base_url}/api/posts
+```
+
+#### Get Specific item
+
+-   Users
+
+```http
+  GET {base_url}/api/users/[username]
+```
+
+-   posts
+
+```http
+  GET {base_url}/api/posts/[id]
+```
+
+#### Update and Delete items
+
+-   Users
+
+```http
+  PUT {base_url}/api/users/[username]
+```
+
+```http
+  DELETE {base_url}/api/users/[username]
+```
+
+-   posts
+
+```http
+  PUT {base_url}/api/posts/[id]
+```
+
+```http
+  DELETE {base_url}/api/posts/[id]
+```
+
+_Provide the updates object in the body of the request.Updates only passed parameters, other parameters remain unchanged_
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`MONGODB_URI`
+
+`FIREBASE_APIKEY`
+
+`FIREBASE_AUTHDOMAIN`
+
+`FIREBASE_PROJECTID`
+
+`FIREBASE_STORAGEBUCKET`
+
+`FIREBASE_MESSAGINGSENDERID`
+
+`FIREBASE_APPID`
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/theMr17/MedNex.git
+```
+
+Go to the project directory
+
+```bash
+  cd MedNex/web
+```
+
+Install packages
+
+```bash
+npm Install
+```
+
+Run Local Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-To learn more about Next.js, take a look at the following resources:
-
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open the link shown.

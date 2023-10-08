@@ -10,7 +10,11 @@ export const GET = async (req, { params }) => {
 
         return new Response(JSON.stringify(user), { status: 200 });
     } catch (error) {
-        return new Response("Failed to get User", { status: 500 });
+        const err = {
+            message: "Failed to get User",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };
 export const PUT = async (req, { params }) => {
@@ -28,7 +32,11 @@ export const PUT = async (req, { params }) => {
 
         return new Response(JSON.stringify(user));
     } catch (error) {
-        return new Response("Failed to update User " + error, { status: 500 });
+        const err = {
+            message: "Failed to update User",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };
 export const DELETE = async (req, { params }) => {
@@ -37,6 +45,10 @@ export const DELETE = async (req, { params }) => {
         const user = await User.findOneAndDelete({ username: params.id });
         return new Response(`User ${params.id} was deleted`, { status: 200 });
     } catch (error) {
-        return new Response("Failed to delete User", { status: 500 });
+        const err = {
+            message: "Failed to delete User",
+            error,
+        };
+        return new Response(JSON.stringify(err), { status: 500 });
     }
 };
