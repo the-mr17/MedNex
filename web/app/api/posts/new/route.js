@@ -16,6 +16,14 @@ export const POST = async (request) => {
         });
 
         await newPost.save();
+
+        if (parentId) {
+            const parentPost = await Post.findById(parentId);
+            parentPost.children.push(newPost._id);
+            console.log(parentPost.children);
+            await parentPost.save();
+        }
+
         return new Response(JSON.stringify(newPost), { status: 201 });
     } catch (error) {
         const err = {
