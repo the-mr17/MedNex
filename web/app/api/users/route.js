@@ -1,11 +1,15 @@
 import User from "@/models/user";
 import { connectToDB } from "@/utils/database";
 
+// Handle POST request for user
+// e.g.- {{base_url}}/api/users  Method: POST
 export const POST = async (req) => {
     const { email, fullname, username, category, userimage } = await req.json();
 
     try {
         await connectToDB();
+
+        //make a newUser object from the schema
         const newUser = new User({
             email: email,
             fullname: fullname,
@@ -18,6 +22,7 @@ export const POST = async (req) => {
     } catch (error) {
         let message = "Failed to create user";
 
+        // Handle duplicate key and validation error from database
         if (error.code == 11000) {
             message = Object.keys(error.keyValue)[0] + " already exists!";
         } else if (error.name == "ValidationError") {
@@ -35,10 +40,12 @@ export const POST = async (req) => {
     }
 };
 
+// Handle Get request for all users
+// e.g.- {{base_url}}/api/users  Method: GET
 export const GET = async (req) => {
     try {
         await connectToDB();
-        const user = await User.find();
+        const user = await User.find(); // get all users from database
         return new Response(JSON.stringify(user), { status: 200 });
     } catch (error) {
         console.log(error.message);
