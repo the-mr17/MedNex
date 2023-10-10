@@ -1,9 +1,9 @@
 import Post from "@/models/post";
-import { connectToDB } from "@/utils/database";
+import { connectToDB } from "@/utils/database"; //Function for connecting to Db
 
 export const POST = async (request) => {
     const { text, author, createdAt, parentId, children } =
-        await request.json();
+        await request.json(); // get the data from the body of the request
 
     try {
         await connectToDB();
@@ -17,6 +17,7 @@ export const POST = async (request) => {
 
         await newPost.save();
 
+        //If parentId data is passed then add the id of the current post to the children of the parent post;
         if (parentId) {
             const parentPost = await Post.findById(parentId);
             parentPost.children.push(newPost._id);
@@ -27,7 +28,7 @@ export const POST = async (request) => {
         return new Response(JSON.stringify(newPost), { status: 201 });
     } catch (error) {
         const err = {
-            message: "Failed to create Post",
+            message: "Failed to create Post", //Generic error message
             error,
         };
         return new Response(JSON.stringify(err), { status: 500 });
