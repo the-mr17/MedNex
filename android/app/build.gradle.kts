@@ -86,4 +86,7 @@ dependencies {
     // firebase
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-auth")
+
+    // circular image view
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 }
