@@ -10,20 +10,16 @@ export const metadata = {
     favicon: "favicon.ico",
 };
 
-// app/layout.tsx
-import { Providers } from "./providers";
 import NavBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en" className="dark">
-            <body>
-                <Providers>
-                    <NavBar />
-                    {children}
-                    <Footer />
-                </Providers>
+            <body className=" min-h-screen bg-zinc-900 p-0 text-gray-300">
+                <NavBar />
+                {children}
+                <Footer />
             </body>
         </html>
     );

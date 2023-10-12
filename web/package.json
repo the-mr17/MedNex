@@ -1,27 +1,25 @@
 {
-  "name": "mednex",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@nextui-org/react": "^2.1.13",
-    "firebase": "^10.4.0",
-    "framer-motion": "^10.16.4",
-    "mongoose": "^7.5.3",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-icons": "^4.11.0",
-    "styled-components": "^6.0.8"
-  },
-  "devDependencies": {
-    "autoprefixer": "latest",
-    "postcss": "latest",
-    "tailwindcss": "latest"
-  }
+    "name": "mednex",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "firebase": "^10.4.0",
+        "javascript-time-ago": "^2.5.9",
+        "mongoose": "^7.5.3",
+        "next": "latest",
+        "react": "latest",
+        "react-dom": "latest",
+        "styled-components": "^6.0.8"
+    },
+    "devDependencies": {
+        "autoprefixer": "latest",
+        "postcss": "latest",
+        "tailwindcss": "latest"
+    }
 }
