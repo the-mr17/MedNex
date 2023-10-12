@@ -6,6 +6,9 @@ import com.google.gson.Gson
 import com.mr_17.mednex.ui.auth.AuthApi
 import com.mr_17.mednex.ui.auth.AuthRepository
 import com.mr_17.mednex.ui.auth.AuthRepositoryImpl
+import com.mr_17.mednex.ui.community.CommunityApi
+import com.mr_17.mednex.ui.community.CommunityRepository
+import com.mr_17.mednex.ui.community.CommunityRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -70,8 +73,17 @@ object AppModule {
     fun providesAuthRepository(impl: AuthRepositoryImpl): AuthRepository = impl
 
     @Provides
+    fun providesCommunityRepository(impl: CommunityRepositoryImpl): CommunityRepository = impl
+
+    @Provides
     @Singleton
     fun providesAuthApi(retrofit: Retrofit): AuthApi {
         return retrofit.create(AuthApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesCommunityApi(retrofit: Retrofit): CommunityApi {
+        return retrofit.create(CommunityApi::class.java)
     }
 }

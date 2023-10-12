@@ -29,7 +29,11 @@
         android:id="@+id/signUpFragment"
         android:name="com.mr_17.mednex.ui.auth.fragments.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_communityFragment"
+            app:destination="@id/communityFragment" />
+    </fragment>
     <fragment
         android:id="@+id/communityFragment"
         android:name="com.mr_17.mednex.ui.community.fragments.CommunityFragment"

@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.mr_17.mednex.MainActivity
 import com.mr_17.mednex.R
 import com.mr_17.mednex.data.Resource
@@ -46,8 +47,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     }
                     is Resource.Success -> {
                         toggleLoading(false)
-                        showToast("success")
-                        //findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        findNavController().navigate(R.id.action_loginFragment_to_communityFragment)
                     }
                     is Resource.Loading -> {
                         toggleLoading(true)
