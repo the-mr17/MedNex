@@ -55,24 +55,24 @@ class PostsRecyclerViewAdapter(
             binding.apply {
                 this@ViewHolder.civProfilePicture = civProfilePicture
                 this@ViewHolder.tvUsername = tvUsername
-                this@ViewHolder.tvMessage = this.tvMessage
+                this@ViewHolder.tvMessage = tvMessage
                 this@ViewHolder.tvTime = tvTime
                 this@ViewHolder.ibLike = ibLike
                 this@ViewHolder.ibReply = ibReply
 
                 ibLike.setOnClickListener {
-                    listener.onLikeButtonClick(binding.root, adapterPosition)
+                    listener.onLikeButtonClick(binding.root, list[adapterPosition])
                 }
 
                 ibReply.setOnClickListener {
-                    listener.onReplyButtonClick(binding.root, adapterPosition)
+                    listener.onReplyButtonClick(binding.root, list[adapterPosition])
                 }
             }
         }
     }
 
     interface OnClickListener {
-        fun onLikeButtonClick(v: View?, position: Int)
-        fun onReplyButtonClick(v: View?, position: Int)
+        fun onLikeButtonClick(v: View?, post: Post)
+        fun onReplyButtonClick(v: View?, post: Post)
     }
 }

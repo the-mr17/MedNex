@@ -19,4 +19,19 @@ class CommunityRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getAllChildrenPosts(childrenIdList: List<String>): Resource<List<Post>> {
+        return try {
+            val result = ArrayList<Post>()
+            childrenIdList.forEach {
+                val response = communityApi.getPostById(it)
+                if(response.isSuccessful) {
+                    result.add(response.body()!!)
+                }
+            }
+            Resource.Success(result)
+        } catch (e: Exception) {
+            Resource.Error(e.message.toString())
+        }
+    }
+
 }

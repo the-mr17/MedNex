@@ -38,5 +38,19 @@
         android:id="@+id/communityFragment"
         android:name="com.mr_17.mednex.ui.community.fragments.CommunityFragment"
         android:label="fragment_community"
-        tools:layout="@layout/fragment_community" />
+        tools:layout="@layout/fragment_community" >
+        <action
+            android:id="@+id/action_communityFragment_to_replyFragment"
+            app:destination="@id/replyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/replyFragment"
+        android:name="com.mr_17.mednex.ui.community.fragments.ReplyFragment"
+        android:label="fragment_reply"
+        tools:layout="@layout/fragment_reply" >
+        <argument
+            android:name="post"
+            app:argType="com.mr_17.mednex.ui.community.models.Post"
+            app:nullable="false" />
+    </fragment>
 </navigation>

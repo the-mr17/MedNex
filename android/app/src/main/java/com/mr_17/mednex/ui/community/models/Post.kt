@@ -1,12 +1,14 @@
 package com.mr_17.mednex.ui.community.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+import java.util.ArrayList
 
 data class Post(
     @SerializedName("author")
     val authorId: String,
     @SerializedName("children")
-    val childrenIdList: List<String>,
+    val childrenIdList: ArrayList<String>,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("_id")
@@ -17,4 +19,4 @@ data class Post(
     val text: String,
     @SerializedName("__v")
     val v: Int
-)
+): Serializable
