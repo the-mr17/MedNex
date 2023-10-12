@@ -18,7 +18,12 @@ export const POST = async (req) => {
             userimage: userimage,
         });
         await newUser.save();
-        return new Response(JSON.stringify(newUser), { status: 201 });
+        return new Response(JSON.stringify(newUser), {
+            status: 201,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     } catch (error) {
         let message = "Failed to create user";
 
@@ -46,7 +51,12 @@ export const GET = async (req) => {
     try {
         await connectToDB();
         const user = await User.find(); // get all users from database
-        return new Response(JSON.stringify(user), { status: 200 });
+        return new Response(JSON.stringify(user), {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     } catch (error) {
         console.log(error.message);
         return new Response("Failed to get Users", { status: 500 });

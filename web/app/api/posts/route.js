@@ -16,7 +16,7 @@ export const GET = async (request) => {
     try {
         await connectToDB();
 
-        const posts = (await Post.find()).map((post) => {
+        const posts = (await Post.find({})).map((post) => {
             let newPost = {
                 ...post._doc,
                 timeAgo: ago.format(post.createdAt, "round"), //add timeAgo field to get calculated post time ago;
@@ -26,7 +26,12 @@ export const GET = async (request) => {
             return newPost;
         }); //find all objects in the database as no parameters are passed to find()
 
-        return new Response(JSON.stringify(posts), { status: 200 });
+        return new Response(JSON.stringify(posts), {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     } catch (error) {
         const err = {
             message: "Failed to get Posts",

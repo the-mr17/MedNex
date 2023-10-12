@@ -25,7 +25,12 @@ export const POST = async (request) => {
             await parentPost.save();
         }
 
-        return new Response(JSON.stringify(newPost), { status: 201 });
+        return new Response(JSON.stringify(newPost), {
+            status: 201,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     } catch (error) {
         const err = {
             message: "Failed to create Post", //Generic error message

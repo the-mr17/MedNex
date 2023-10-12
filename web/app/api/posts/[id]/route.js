@@ -54,7 +54,12 @@ export const DELETE = async (req, { params }) => {
         await connectToDB();
         // Find post with the Id in mongodb and delete the post
         const post = await Post.findByIdAndDelete(params.id);
-        return new Response(`Post ${params.id} was deleted`, { status: 200 });
+        return new Response(`Post ${params.id} was deleted`, {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     } catch (error) {
         const err = {
             message: "Failed to Delete Post", //Generic error Message
