@@ -32,7 +32,9 @@ class PostsRecyclerViewAdapter(
         holder.apply {
             //tvUsername.text = post.authorId
             tvMessage.text = post.text
-            tvTime.text = post.createdAt
+            tvTime.text = post.timeAgo
+            tvLikeCount.text = post.likeCount.toString()
+            tvReplyCount.text = post.childrenIdList.size.toString()
         }
     }
 
@@ -50,6 +52,8 @@ class PostsRecyclerViewAdapter(
         var tvTime: TextView
         private var ibLike: ImageButton
         private var ibReply: ImageButton
+        var tvLikeCount: TextView
+        var tvReplyCount: TextView
 
         init {
             binding.apply {
@@ -59,6 +63,8 @@ class PostsRecyclerViewAdapter(
                 this@ViewHolder.tvTime = tvTime
                 this@ViewHolder.ibLike = ibLike
                 this@ViewHolder.ibReply = ibReply
+                this@ViewHolder.tvLikeCount = tvLikeCount
+                this@ViewHolder.tvReplyCount = tvReplyCount
 
                 ibLike.setOnClickListener {
                     listener.onLikeButtonClick(binding.root, list[adapterPosition])

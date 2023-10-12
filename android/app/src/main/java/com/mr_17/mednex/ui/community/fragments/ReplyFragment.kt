@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mr_17.mednex.MainActivity
 import com.mr_17.mednex.R
 import com.mr_17.mednex.data.Resource
 import com.mr_17.mednex.databinding.FragmentReplyBinding
@@ -30,9 +31,18 @@ class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapte
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentReplyBinding.bind(view)
 
+        (activity as MainActivity).setToolbarTitle("Replies")
+
         post = args.post
 
-        communityViewModel.getAllChildrenPosts(post.childrenIdList!!)
+        communityViewModel.getAllChildrenPosts(post.childrenIdList)
+
+        binding.post.apply {
+            tvMessage.text = this@ReplyFragment.post.text
+            tvTime.text = this@ReplyFragment.post.timeAgo
+            likeContainer.isVisible = false
+            replyContainer.isVisible = false
+        }
 
         initObservers()
     }
@@ -48,12 +58,6 @@ class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapte
                     is Resource.Success -> {
                         showLoading(false)
                         binding.apply {
-                            post.apply {
-                                tvMessage.text = this@ReplyFragment.post.text
-                                ibReply.isVisible = false
-                                ibLike.isVisible = false
-                            }
-
                             rvPostsReplies.apply {
                                 adapter = PostsRecyclerViewAdapter(
                                     it.data!!,
@@ -63,11 +67,9 @@ class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapte
                                 layoutManager = LinearLayoutManager(context)
                             }
                         }
-                        showToast(it.data.toString())
                     }
                     is Resource.Loading -> {
                         showLoading(true)
-                        showToast("loading")
                     }
                 }
             }

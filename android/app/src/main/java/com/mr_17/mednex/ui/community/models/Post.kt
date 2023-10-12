@@ -18,5 +18,9 @@ data class Post(
     @SerializedName("text")
     val text: String,
     @SerializedName("__v")
-    val v: Int
+    val v: Int,
+    @SerializedName("likeCount")
+    val likeCount: Int,
+    @SerializedName("timeAgo")
+    val timeAgo: String,
 ): Serializable

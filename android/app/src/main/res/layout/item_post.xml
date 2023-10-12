@@ -76,23 +76,61 @@
         app:layout_constraintTop_toBottomOf="@id/tv_message"
         app:layout_constraintStart_toStartOf="@id/g_post_vertical">
 
-        <ImageButton
-            android:id="@+id/ib_like"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_thumb_up_off_alt_24"
-            android:background="@color/bg_color"
-            android:layout_marginEnd="16dp"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/like_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp">
 
-        <ImageButton
-            android:id="@+id/ib_reply"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_reply_24"
-            android:background="@color/bg_color"
-            android:layout_marginEnd="16dp"/>
+            <ImageButton
+                android:id="@+id/ib_like"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_thumb_up_off_alt_24"
+                android:background="@color/bg_color"/>
+
+            <TextView
+                android:id="@+id/tv_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik"
+                android:text="100"
+                android:textColor="@color/txt_color"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/g_post_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/reply_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp">
+
+            <ImageButton
+                android:id="@+id/ib_reply"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_reply_24"
+                android:background="@color/bg_color"/>
+
+            <TextView
+                android:id="@+id/tv_reply_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik"
+                android:text="100"
+                android:textColor="@color/txt_color"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/g_post_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
