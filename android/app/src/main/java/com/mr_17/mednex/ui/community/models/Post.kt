@@ -14,7 +14,7 @@ data class Post(
     @SerializedName("_id")
     val id: String,
     @SerializedName("parentId")
-    val parentId: String,
+    val parentId: String?,
     @SerializedName("text")
     val text: String,
     @SerializedName("__v")

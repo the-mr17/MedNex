@@ -10,8 +10,14 @@ class CommunityRepositoryImpl @Inject constructor(
     override suspend fun getAllPosts(): Resource<List<Post>> {
         try {
             val response = communityApi.getAllPosts()
+            val result = ArrayList<Post>()
             if(response.isSuccessful) {
-                return Resource.Success(response.body()!!)
+                response.body()?.forEach {
+                    if(it.parentId == null) {
+                        result.add(it)
+                    }
+                }
+                return Resource.Success(result)
             }
             return Resource.Error("An error occurred")
         } catch (e: Exception) {
