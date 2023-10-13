@@ -43,6 +43,7 @@ class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapte
                 tvTime.text = this@ReplyFragment.post.timeAgo
                 likeContainer.isVisible = false
                 replyContainer.isVisible = false
+                divider.isVisible = false
             }
 
             btnUploadReply.setOnClickListener {
