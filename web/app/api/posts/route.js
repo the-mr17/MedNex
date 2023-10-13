@@ -2,7 +2,6 @@ import Post from "@/models/post";
 import User from "@/models/user";
 import { connectToDB } from "@/utils/database";
 import TimeAgo from "javascript-time-ago";
-
 // English.
 import en from "javascript-time-ago/locale/en";
 
@@ -25,7 +24,7 @@ export const GET = async (request) => {
 
             return newPost;
         }); //find all objects in the database as no parameters are passed to find()
-
+        request.headers.set("Cache-Control", "no-cache");
         return new Response(JSON.stringify(posts), {
             status: 200,
             headers: {
@@ -39,17 +38,4 @@ export const GET = async (request) => {
         };
         return new Response(JSON.stringify(err), { status: 500 });
     }
-};
-
-// Export the getServerSideProps function
-export const getServerSideProps = async (context) => {
-    // Get the posts from the GET function
-    const posts = await GET(context.req);
-
-    // Return the posts as a prop to the page
-    return {
-        props: {
-            posts,
-        },
-    };
 };
