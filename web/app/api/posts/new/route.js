@@ -22,10 +22,16 @@ export const POST = async (request) => {
             const parentPost = await Post.findById(parentId);
             parentPost.children.push(newPost._id);
             console.log(parentPost.children);
+            console.log(parentPost);
             await parentPost.save();
         }
 
-        return new Response(JSON.stringify(newPost), { status: 201 });
+        return new Response(JSON.stringify(newPost), {
+            status: 201,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     } catch (error) {
         const err = {
             message: "Failed to create Post", //Generic error message

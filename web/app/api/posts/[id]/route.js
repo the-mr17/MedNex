@@ -7,6 +7,8 @@ export const GET = async (req, { params }) => {
     try {
         await connectToDB();
         const post = await Post.findById(params.id); //Get post by id
+        request.headers.set("Cache-Control", "no-cache");
+        request.revalidateSeconds = 30;
 
         return new Response(JSON.stringify(post), { status: 200 });
     } catch (error) {
@@ -54,7 +56,12 @@ export const DELETE = async (req, { params }) => {
         await connectToDB();
         // Find post with the Id in mongodb and delete the post
         const post = await Post.findByIdAndDelete(params.id);
-        return new Response(`Post ${params.id} was deleted`, { status: 200 });
+        return new Response(`Post ${params.id} was deleted`, {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     } catch (error) {
         const err = {
             message: "Failed to Delete Post", //Generic error Message

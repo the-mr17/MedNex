@@ -1,86 +1,34 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
 
-import React from "react";
+function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+}
 
-import {
-    Navbar,
-    NavbarBrand,
-    NavbarContent,
-    NavbarItem,
-    Link,
-    Button,
-} from "@nextui-org/react";
-import { MedNexLogo } from "./MedNexLogo.jsx";
-
-export default function NavBar() {
+export default function Example() {
     return (
-        <Navbar shouldHideOnScroll isBordered>
-            <NavbarBrand>
-                <MedNexLogo />
-                <p className="font-bold text-inherit">MedNex</p>
-            </NavbarBrand>
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem isActive>
-                    <Button
-                        href="#"
-                        as={Link}
-                        color="primary"
-                        variant="solid"
-                    >
-                        Locate Clinics
-                    </Button>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button
-                        href="#"
-                        as={Link}
-                        color="primary"
-                        variant="transparent"
-                    >
-                        Treat Me
-                    </Button>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button
-                        href="#"
-                        as={Link}
-                        color="primary"
-                        variant="transparent"
-                    >
-                        Insure Me
-                    </Button>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button
-                        href="#"
-                        as={Link}
-                        color="primary"
-                        variant="transparent"
-                    >
-                        Government
-                    </Button>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button
-                        href="#"
-                        as={Link}
-                        color="primary"
-                        variant="transparent"
-                    >
-                        Community
-                    </Button>
-                </NavbarItem>
-            </NavbarContent>
-            <NavbarContent justify="end">
-                <NavbarItem className="hidden lg:flex">
-                    <Link href="#">Login</Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button as={Link} color="primary" href="#" variant="flat">
-                        Sign Up
-                    </Button>
-                </NavbarItem>
-            </NavbarContent>
-        </Navbar>
+        <nav className=" sticky bg-orange-300 inset-x-0 p-3 m-0 top-0 flex justify-center font-semibold text-neutral-800">
+            <div className=" max-w-7xl w-full flex justify-between align-middle">
+                <div className="flex gap-3">
+                    <Image
+                        src={"/assets/logo.png"}
+                        width={25}
+                        height={25}
+                        className=""
+                        alt="logo"
+                    />
+                    <h1 className=" text-xl ">MedNex</h1>
+                </div>
+                <div className="flex justify-around align-middle w-5/12">
+                    <Link href={"/"}>Downloads</Link>
+                    <Link
+                        href={"https://github.com/theMr17/MedNex"}
+                        target="blank">
+                        Github
+                    </Link>
+                    <Link href={"/team"}>Team</Link>
+                </div>
+            </div>
+        </nav>
     );
 }
