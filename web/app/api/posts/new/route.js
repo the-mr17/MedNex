@@ -22,6 +22,7 @@ export const POST = async (request) => {
             const parentPost = await Post.findById(parentId);
             parentPost.children.push(newPost._id);
             console.log(parentPost.children);
+            console.log(parentPost);
             await parentPost.save();
         }
 
