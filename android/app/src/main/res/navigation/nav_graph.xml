@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_communityFragment_to_replyFragment"
             app:destination="@id/replyFragment" />
+        <action
+            android:id="@+id/action_communityFragment_to_uploadPostFragment"
+            app:destination="@id/uploadPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/replyFragment"
@@ -53,4 +56,9 @@
             app:argType="com.mr_17.mednex.ui.community.models.Post"
             app:nullable="false" />
     </fragment>
+    <fragment
+        android:id="@+id/uploadPostFragment"
+        android:name="com.mr_17.mednex.ui.community.fragments.UploadPostFragment"
+        android:label="fragment_upload_post"
+        tools:layout="@layout/fragment_upload_post" />
 </navigation>

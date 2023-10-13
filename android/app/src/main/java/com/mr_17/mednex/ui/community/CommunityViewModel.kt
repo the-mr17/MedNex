@@ -21,8 +21,11 @@ class CommunityViewModel @Inject constructor(
     private val _allChildrenPostsFlow = MutableStateFlow<Resource<List<Post>>>(Resource.Loading())
     val allChildrenPostsFlow: StateFlow<Resource<List<Post>>> = _allChildrenPostsFlow
 
-    private val _uploadPostFlow = MutableStateFlow<Resource<Post>>(Resource.Loading())
-    val uploadPostFlow: StateFlow<Resource<Post>> = _uploadPostFlow
+    private val _uploadPostFlow = MutableStateFlow<Resource<Post>?>(null)
+    val uploadPostFlow: StateFlow<Resource<Post>?> = _uploadPostFlow
+
+    private val _uploadReplyFlow = MutableStateFlow<Resource<Post>?>(null)
+    val uploadReplyFlow: StateFlow<Resource<Post>?> = _uploadReplyFlow
 
     fun getAllPosts() = viewModelScope.launch {
         val result = repository.getAllPosts()
@@ -37,5 +40,10 @@ class CommunityViewModel @Inject constructor(
     fun uploadPost(authorId: String, message: String) = viewModelScope.launch {
         val result = repository.uploadPost(authorId, message)
         _uploadPostFlow.value = result
+    }
+
+    fun uploadReply(authorId: String, parentId: String, message: String) = viewModelScope.launch {
+        val result = repository.uploadReply(authorId, parentId, message)
+        _uploadReplyFlow.value = result
     }
 }

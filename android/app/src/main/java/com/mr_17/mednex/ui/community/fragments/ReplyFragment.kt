@@ -37,11 +37,21 @@ class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapte
 
         communityViewModel.getAllChildrenPosts(post.childrenIdList)
 
-        binding.post.apply {
-            tvMessage.text = this@ReplyFragment.post.text
-            tvTime.text = this@ReplyFragment.post.timeAgo
-            likeContainer.isVisible = false
-            replyContainer.isVisible = false
+        binding.apply {
+            post.apply {
+                tvMessage.text = this@ReplyFragment.post.text
+                tvTime.text = this@ReplyFragment.post.timeAgo
+                likeContainer.isVisible = false
+                replyContainer.isVisible = false
+            }
+
+            btnUploadReply.setOnClickListener {
+                communityViewModel.uploadReply(
+                    "651ce2a0b1edccd4db5dff33",
+                    this@ReplyFragment.post.id.toString(),
+                    etMessage.text.toString()
+                )
+            }
         }
 
         initObservers()

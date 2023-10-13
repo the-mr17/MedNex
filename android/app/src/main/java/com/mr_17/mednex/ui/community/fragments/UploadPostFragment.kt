@@ -1,9 +1,9 @@
 package com.mr_17.mednex.ui.community.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,38 +13,41 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mr_17.mednex.MainActivity
 import com.mr_17.mednex.R
 import com.mr_17.mednex.data.Resource
-import com.mr_17.mednex.databinding.FragmentCommunityBinding
+import com.mr_17.mednex.databinding.FragmentUploadPostBinding
 import com.mr_17.mednex.ui.community.CommunityViewModel
 import com.mr_17.mednex.ui.community.adapters.PostsRecyclerViewAdapter
-import com.mr_17.mednex.ui.community.models.Post
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CommunityFragment : Fragment(R.layout.fragment_community), PostsRecyclerViewAdapter.OnClickListener {
-    private lateinit var binding: FragmentCommunityBinding
+class UploadPostFragment : Fragment(R.layout.fragment_upload_post) {
+    private lateinit var binding: FragmentUploadPostBinding
     private val communityViewModel by viewModels<CommunityViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentUploadPostBinding.bind(view)
 
-        (activity as MainActivity).setToolbarTitle("Community")
+        (activity as MainActivity).setToolbarTitle("Upload Post")
 
-        binding = FragmentCommunityBinding.bind(view)
+        showLoading(false)
 
-        binding.fabNewPost.setOnClickListener {
-            findNavController().navigate(R.id.action_communityFragment_to_uploadPostFragment)
+        binding.btnUpload.setOnClickListener {
+            communityViewModel.uploadPost(
+                "651ce2a0b1edccd4db5dff33",
+                binding.etMessage.text.toString()
+            )
         }
 
-        communityViewModel.getAllPosts()
+
 
         initObservers()
     }
 
     private fun initObservers() {
         lifecycleScope.launch {
-            communityViewModel.allPostsFlow.collectLatest {
+            communityViewModel.uploadPostFlow.collectLatest {
                 when(it) {
                     is Resource.Error -> {
                         showLoading(false)
@@ -52,37 +55,22 @@ class CommunityFragment : Fragment(R.layout.fragment_community), PostsRecyclerVi
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        binding.rvPosts.apply {
-                            adapter = PostsRecyclerViewAdapter(
-                                it.data!!,
-                                context,
-                                this@CommunityFragment
-                            )
-                            layoutManager = LinearLayoutManager(context)
-                        }
+                        showToast("Post Uploaded!")
+                        findNavController().navigateUp()
                     }
                     is Resource.Loading -> {
                         showLoading(true)
                     }
+
+                    else -> {}
                 }
             }
         }
     }
 
-    override fun onLikeButtonClick(v: View?, post: Post) {
-
-    }
-
-    override fun onReplyButtonClick(v: View?, post: Post) {
-        findNavController().navigate(CommunityFragmentDirections.actionCommunityFragmentToReplyFragment(
-            post
-        ))
-    }
-
     private fun showLoading(isLoading: Boolean) {
         binding.apply {
             circularProgressIndicator.isVisible = isLoading
-            rvPosts.isVisible = !isLoading
         }
     }
 
