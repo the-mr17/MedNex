@@ -40,3 +40,16 @@ export const GET = async (request) => {
         return new Response(JSON.stringify(err), { status: 500 });
     }
 };
+
+// Export the getServerSideProps function
+export const getServerSideProps = async (context) => {
+    // Get the posts from the GET function
+    const posts = await GET(context.req);
+
+    // Return the posts as a prop to the page
+    return {
+        props: {
+            posts,
+        },
+    };
+};
