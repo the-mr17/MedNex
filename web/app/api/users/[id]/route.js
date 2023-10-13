@@ -9,7 +9,8 @@ export const GET = async (req, { params }) => {
         const user = await User.findOne({ username: params.id }).populate(
             "username"
         ); //find one object with the username parameter
-
+        request.headers.set("Cache-Control", "no-cache");
+        request.revalidateSeconds = 30;
         return new Response(JSON.stringify(user), {
             status: 200,
             headers: {

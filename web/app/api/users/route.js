@@ -51,6 +51,8 @@ export const GET = async (req) => {
     try {
         await connectToDB();
         const user = await User.find(); // get all users from database
+        request.headers.set("Cache-Control", "no-cache");
+        request.revalidateSeconds = 30;
         return new Response(JSON.stringify(user), {
             status: 200,
             headers: {

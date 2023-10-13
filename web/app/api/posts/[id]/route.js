@@ -7,6 +7,8 @@ export const GET = async (req, { params }) => {
     try {
         await connectToDB();
         const post = await Post.findById(params.id); //Get post by id
+        request.headers.set("Cache-Control", "no-cache");
+        request.revalidateSeconds = 30;
 
         return new Response(JSON.stringify(post), { status: 200 });
     } catch (error) {

@@ -25,6 +25,7 @@ export const GET = async (request) => {
             return newPost;
         }); //find all objects in the database as no parameters are passed to find()
         request.headers.set("Cache-Control", "no-cache");
+        request.revalidateSeconds = 30;
         return new Response(JSON.stringify(posts), {
             status: 200,
             headers: {
