@@ -40,8 +40,6 @@ class UploadPostFragment : Fragment(R.layout.fragment_upload_post) {
             )
         }
 
-
-
         initObservers()
     }
 
@@ -55,7 +53,7 @@ class UploadPostFragment : Fragment(R.layout.fragment_upload_post) {
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        showToast("Post Uploaded!")
+                        showToast("Post uploaded!")
                         findNavController().navigateUp()
                     }
                     is Resource.Loading -> {
@@ -70,7 +68,8 @@ class UploadPostFragment : Fragment(R.layout.fragment_upload_post) {
 
     private fun showLoading(isLoading: Boolean) {
         binding.apply {
-            circularProgressIndicator.isVisible = isLoading
+            loadingBar.isVisible = isLoading
+            btnUpload.isVisible = !isLoading
         }
     }
 

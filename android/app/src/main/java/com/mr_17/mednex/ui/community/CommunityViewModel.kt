@@ -1,6 +1,5 @@
 package com.mr_17.mednex.ui.community
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mr_17.mednex.data.Resource
@@ -33,16 +32,19 @@ class CommunityViewModel @Inject constructor(
     }
 
     fun getAllChildrenPosts(childrenIdList: List<String>) = viewModelScope.launch {
+        _allChildrenPostsFlow.value = Resource.Loading()
         val result = repository.getAllChildrenPosts(childrenIdList)
         _allChildrenPostsFlow.value = result
     }
 
     fun uploadPost(authorId: String, message: String) = viewModelScope.launch {
+        _uploadPostFlow.value = Resource.Loading()
         val result = repository.uploadPost(authorId, message)
         _uploadPostFlow.value = result
     }
 
     fun uploadReply(authorId: String, parentId: String, message: String) = viewModelScope.launch {
+        _uploadReplyFlow.value = Resource.Loading()
         val result = repository.uploadReply(authorId, parentId, message)
         _uploadReplyFlow.value = result
     }
