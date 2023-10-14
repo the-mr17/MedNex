@@ -14,6 +14,7 @@ import com.mr_17.mednex.MainActivity
 import com.mr_17.mednex.R
 import com.mr_17.mednex.data.Resource
 import com.mr_17.mednex.databinding.FragmentUploadPostBinding
+import com.mr_17.mednex.ui.auth.AuthViewModel
 import com.mr_17.mednex.ui.community.CommunityViewModel
 import com.mr_17.mednex.ui.community.adapters.PostsRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 class UploadPostFragment : Fragment(R.layout.fragment_upload_post) {
     private lateinit var binding: FragmentUploadPostBinding
     private val communityViewModel by viewModels<CommunityViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +37,7 @@ class UploadPostFragment : Fragment(R.layout.fragment_upload_post) {
 
         binding.btnUpload.setOnClickListener {
             communityViewModel.uploadPost(
-                "651ce2a0b1edccd4db5dff33",
+                authViewModel.currentUser?.displayName.toString(),
                 binding.etMessage.text.toString()
             )
         }

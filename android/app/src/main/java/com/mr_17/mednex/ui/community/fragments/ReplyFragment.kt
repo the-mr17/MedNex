@@ -14,6 +14,7 @@ import com.mr_17.mednex.MainActivity
 import com.mr_17.mednex.R
 import com.mr_17.mednex.data.Resource
 import com.mr_17.mednex.databinding.FragmentReplyBinding
+import com.mr_17.mednex.ui.auth.AuthViewModel
 import com.mr_17.mednex.ui.community.CommunityViewModel
 import com.mr_17.mednex.ui.community.adapters.PostsRecyclerViewAdapter
 import com.mr_17.mednex.ui.community.models.Post
@@ -25,6 +26,7 @@ import kotlinx.coroutines.launch
 class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapter.OnClickListener {
     private lateinit var binding: FragmentReplyBinding
     private val communityViewModel by viewModels<CommunityViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
     private val args by navArgs<ReplyFragmentArgs>()
     private lateinit var post: Post
 
@@ -50,7 +52,7 @@ class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapte
 
             btnUploadReply.setOnClickListener {
                 communityViewModel.uploadReply(
-                    "651ce2a0b1edccd4db5dff33",
+                    authViewModel.currentUser?.displayName.toString(),
                     this@ReplyFragment.post.id.toString(),
                     etMessage.text.toString()
                 )

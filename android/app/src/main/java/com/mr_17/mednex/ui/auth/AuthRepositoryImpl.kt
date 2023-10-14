@@ -58,7 +58,7 @@ class AuthRepositoryImpl @Inject constructor(
                         firebaseAuth.createUserWithEmailAndPassword(email, password).await()
                     result.user?.updateProfile(
                         UserProfileChangeRequest.Builder()
-                            .setDisplayName(fullName)
+                            .setDisplayName(response.body()?.id)
                             .build()
                     )?.await()
 
