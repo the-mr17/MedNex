@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model, models } = require("mongoose");
 
 // Prescription Structure
 const prescriptionSchema = new Schema({
