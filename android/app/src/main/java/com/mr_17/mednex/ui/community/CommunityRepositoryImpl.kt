@@ -1,13 +1,15 @@
 package com.mr_17.mednex.ui.community
 
 import com.mr_17.mednex.data.Resource
+import com.mr_17.mednex.ui.auth.AuthApi
 import com.mr_17.mednex.ui.community.models.Post
 import com.mr_17.mednex.ui.community.models.UploadPostBody
 import com.mr_17.mednex.ui.community.models.UploadReplyBody
 import javax.inject.Inject
 
 class CommunityRepositoryImpl @Inject constructor(
-    private val communityApi: CommunityApi
+    private val communityApi: CommunityApi,
+    private val authApi: AuthApi
 ): CommunityRepository {
     override suspend fun getAllPosts(): Resource<List<Post>> {
         try {
@@ -15,8 +17,15 @@ class CommunityRepositoryImpl @Inject constructor(
             val result = ArrayList<Post>()
             if(response.isSuccessful) {
                 response.body()?.forEach {
+                    // only replies will have a parentId
                     if(it.parentId == null) {
-                        result.add(it)
+                        // getting username by using authorId of each post
+                        val userResponse
+                            = authApi.getUserByUserId(it.authorId)
+                        if(userResponse.isSuccessful) {
+                            it.username = userResponse.body()?.username.toString()
+                            result.add(it)
+                        }
                     }
                 }
                 return Resource.Success(result)
@@ -33,7 +42,13 @@ class CommunityRepositoryImpl @Inject constructor(
             childrenIdList.forEach {
                 val response = communityApi.getPostById(it)
                 if(response.isSuccessful) {
-                    result.add(response.body()!!)
+                    // getting username by using authorId of each post
+                    val userResponse
+                            = authApi.getUserByUserId(response.body()?.authorId!!)
+                    if(userResponse.isSuccessful) {
+                        response.body()?.username = userResponse.body()?.username.toString()
+                        result.add(response.body()!!)
+                    }
                 }
             }
             Resource.Success(result)

@@ -5,6 +5,7 @@ import java.io.Serializable
 import java.util.ArrayList
 
 data class Post(
+    var username: String,
     @SerializedName("author")
     val authorId: String,
     @SerializedName("children")

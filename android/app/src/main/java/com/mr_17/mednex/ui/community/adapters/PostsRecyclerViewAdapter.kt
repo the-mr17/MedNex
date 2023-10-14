@@ -30,7 +30,7 @@ class PostsRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post = list[position]
         holder.apply {
-            //tvUsername.text = post.authorId
+            tvUsername.text = post.username
             tvMessage.text = post.text
             tvTime.text = post.timeAgo
             tvLikeCount.text = post.likeCount.toString()

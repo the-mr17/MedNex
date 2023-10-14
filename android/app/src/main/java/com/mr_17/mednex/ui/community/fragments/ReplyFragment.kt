@@ -40,6 +40,7 @@ class ReplyFragment : Fragment(R.layout.fragment_reply), PostsRecyclerViewAdapte
 
         binding.apply {
             post.apply {
+                tvUsername.text = this@ReplyFragment.post.username
                 tvMessage.text = this@ReplyFragment.post.text
                 tvTime.text = this@ReplyFragment.post.timeAgo
                 likeContainer.isVisible = false
