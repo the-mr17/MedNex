@@ -3,7 +3,7 @@ import { connectToDB } from "@/utils/database"; //function for connecting to mon
 
 // Handle Get request for post with the ObjectId of the post passed into the params
 // e.g.- {{base_url}}/api/posts/12345  Method: GET
-export const GET = async (req, { params }) => {
+export const GET = async (request, { params }) => {
     try {
         await connectToDB();
         const post = await Post.findById(params.id); //Get post by id
