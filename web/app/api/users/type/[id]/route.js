@@ -1,7 +1,7 @@
 import User from "@/models/user";
 import { connectToDB } from "@/utils/database";
 
-// Handle Get request for user with the username of the user passed into the params.id
+// Handle Get request for user with the category of the user passed into the params.id
 // e.g.- {{base_url}}/api/users/12345  Method: GET
 export const GET = async (request, { params }) => {
     try {

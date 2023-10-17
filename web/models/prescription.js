@@ -2,6 +2,16 @@ const { Schema, model, models } = require("mongoose");
 
 // Prescription Structure
 const prescriptionSchema = new Schema({
+    patientId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    doctorId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
     doctorName: {
         type: String,
         required: true,
