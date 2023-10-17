@@ -2,11 +2,14 @@ import prescription from "@/models/prescription";
 import { connectToDB } from "@/utils/database"; //Function for connecting to Db
 
 export const POST = async (request) => {
-    const { doctorName, medication, tests } = await request.json(); // get the data from the body of the request
+    const { patientId, doctorId, doctorName, medication, tests } =
+        await request.json(); // get the data from the body of the request
 
     try {
         await connectToDB();
         const newPrescription = new prescription({
+            patientId,
+            doctorId,
             doctorName: doctorName,
             medication: medication,
             tests: tests,
