@@ -18,8 +18,8 @@ interface AuthApi {
     suspend fun getAllUsers(
     ): Response<List<UploadProfileResponse>>
 
-    @GET("users/{username}")
-    suspend fun getMyProfile(
-        @Path("username") username: String
+    @GET("users/{userId}")
+    suspend fun getUserByUserId(
+        @Path("userId") userId: String
     ): Response<UploadProfileResponse>
 }

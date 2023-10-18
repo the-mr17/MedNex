@@ -25,4 +25,5 @@
     <string name="username">Username</string>
     <string name="patient">Patient</string>
     <string name="doctor">Doctor</string>
+    <string name="lorem_small">Lorem ipsum dolor sit amet. Ab consequatur doloremque est minima voluptatem et odit dolor et deserunt mollitia est accusantium cupiditate est perspiciatis consequatur.</string>
 </resources>

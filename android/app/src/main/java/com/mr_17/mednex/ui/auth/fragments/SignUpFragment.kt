@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.mr_17.mednex.MainActivity
 import com.mr_17.mednex.R
@@ -69,8 +70,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                     }
                     is Resource.Success -> {
                         toggleLoading(false)
-                        showSnackBar("success")
-                        //findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                        findNavController().navigate(R.id.action_signUpFragment_to_communityFragment)
                     }
                     is Resource.Loading -> {
                         toggleLoading(true)
