@@ -19,7 +19,7 @@ export const GET = async (request) => {
             let newPost = {
                 ...post._doc,
                 timeAgo: ago.format(post.createdAt, "round"), //add timeAgo field to get calculated post time ago;
-                username: User.findById(post.author).username,
+                username: User.findById(post.author).username || null,
             };
 
             return newPost;

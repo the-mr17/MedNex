@@ -47,7 +47,7 @@ export const POST = async (req) => {
 
 // Handle Get request for all users
 // e.g.- {{base_url}}/api/users  Method: GET
-export const GET = async (req) => {
+export const GET = async (request) => {
     try {
         await connectToDB();
         const user = await User.find(); // get all users from database

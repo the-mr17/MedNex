@@ -3,12 +3,10 @@ import { connectToDB } from "@/utils/database";
 
 // Handle Get request for user with the username of the user passed into the params.id
 // e.g.- {{base_url}}/api/users/12345  Method: GET
-export const GET = async (req, { params }) => {
+export const GET = async (request, { params }) => {
     try {
         await connectToDB();
-        const user = await User.findOne({ username: params.id }).populate(
-            "username"
-        ); //find one object with the username parameter
+        const user = await User.findById(params.id); //find one object with the ID parameter
         request.headers.set("Cache-Control", "no-cache");
         request.revalidateSeconds = 30;
         return new Response(JSON.stringify(user), {
