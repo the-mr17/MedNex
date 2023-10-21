@@ -95,6 +95,9 @@ The Android app seamlessly integrates with the backend APIs provided by MedNex, 
 
 <img src="https://github.com/theMr17/MedNex/assets/84731134/2a210f06-8527-4ee2-82a0-99448c85c45c" width="300"/>
 <img src="https://github.com/theMr17/MedNex/assets/84731134/2e1aab74-7e9c-4fe6-8177-1ef5f8d822e6" width="300"/>
+<img src="https://github.com/theMr17/MedNex/assets/84731134/b8ee1562-8ae6-4d37-9e6b-ae43d3c86729" width="300"/>
+<img src="https://github.com/theMr17/MedNex/assets/84731134/e7cb1022-13bf-4e2d-80b5-2d4e562ec4bc" width="300"/>
+<img src="https://github.com/theMr17/MedNex/assets/84731134/2474b427-9351-47ff-a0c0-477197ac2331" width="300"/>
 
 ### Download the app
 
